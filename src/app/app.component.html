@@ -1,0 +1,92 @@
+<div class="body" [style.background-image]="'url(' + bg + ')'" style="background-size: 100%;">
+<div class="container">
+  <nav>
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" #box (keyup.enter)="searchCity(box.value)" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+
+  <div class="card white-text">
+    <div class="card-content">
+      <ul>
+         <li *ngFor="let item of climate">
+          <div class="row">
+            <div class="col s7 push-s5">
+               <div class="center-align">
+                 <label class="temp">{{item.query.results.channel.item.condition.temp}}ºF</label>
+                 <h5>{{converter(item.query.results.channel.item.condition.temp) | number:'2.2-2'}}ºC</h5>
+               </div>
+            </div>
+            <div class="col s5 pull-s7">
+              <h4>{{item.query.results.channel.location.city}} - {{item.query.results.channel.location.region}}</h4>
+              <h5>{{item.query.results.channel.location.country}}</h5>
+                 <i [class]="toChange(item.query.results.channel.item.condition.text)" style="font-size: 150px;"></i>
+              <h5>{{item.query.results.channel.item.condition.text}}</h5>
+              <h6>{{item.query.results.channel.item.condition.date}}</h6>
+            </div>
+          </div>
+         </li>
+      </ul>
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a href="#forecast" class="active">forecast</a></li>
+        <li class="tab"><a href="#details">Details</a></li>
+      </ul>
+    </div>
+    <div class="card-content grey lighten-4">
+      <div id="forecast">
+           <div class="center-align">
+             <div class="row">
+                <ul *ngFor="let item of climate">
+                  <li  *ngFor="let v of generateArray(item.query.results.channel.item.forecast); let i=index">
+                    <div class="col s2 m2 2" *ngIf="i<6">
+                       <h6>{{v.date}}</h6>
+                          <i [class]="toChange(v.text)" style="font-size: 50px;"></i>
+                       <h6>{{v.text}}</h6>
+                       <h6>{{v.high}}/{{v.low}}</h6>
+                   </div>
+                 </li>
+               </ul>
+            </div>
+          </div>
+      </div>
+      <div id="details">
+        <div class="row" *ngFor="let item of climate">
+          <div class="col s12 m6 l3">
+            <h5>Atmosphere</h5>
+            <h6>Humidity : {{item.query.results.channel.atmosphere.humidity}}</h6>
+            <h6>Pressure : {{item.query.results.channel.atmosphere.pressure}}</h6>
+            <h6>Rising : {{item.query.results.channel.atmosphere.rising}}</h6>
+            <h6>Visibility : {{item.query.results.channel.atmosphere.visibility}}</h6>
+          </div>
+          <div class="col s12 m6 l3">
+            <h5>Wind</h5>
+            <h6>chill : {{item.query.results.channel.wind.chill}}</h6>
+            <h6>direction : {{item.query.results.channel.wind.direction}}</h6>
+            <h6>speed : {{item.query.results.channel.wind.speed}}</h6>
+          </div>
+          <div class="col s12 m6 l3">
+            <h5>Units</h5>
+            <h6>distance : {{item.query.results.channel.units.distance}}</h6>
+            <h6>pressure : {{item.query.results.channel.units.pressure}}</h6>
+            <h6>speed : {{item.query.results.channel.units.speed}}</h6>
+            <h6>temperature : {{item.query.results.channel.units.temperature}}</h6>
+          </div>
+          <div class="col s12 m6 l3">
+              <i [class]="toChange(item.query.results.channel.item.condition.text)" style="font-size: 50px;"></i>
+              <h6>{{item.query.results.channel.item.condition.text}}</h6>
+              <h6>{{item.query.results.channel.item.condition.date}}</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
