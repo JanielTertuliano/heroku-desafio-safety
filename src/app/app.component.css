@@ -2,3 +2,28 @@
   height: 400px;
   width: 100%;
 }
+
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
+html, body{
+    height:100%;
+}
+
+.body{
+    width:100%;
+    height:auto;
+    min-height:100%;
+    filter: grayscale(35%);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+}
+
+.temp{
+    font-size: 200px;
+    color: #fff;
+}
