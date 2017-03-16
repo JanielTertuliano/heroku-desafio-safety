@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "engines": {
     "node": "6.9.3",
-    "npm": "3.10.x"
+    "npm": "3.10.10"
   },
   "scripts": {
     "ng": "ng",
@@ -12,8 +12,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "preinstall":   "npm install -g http-server",
-    "postinstall":  "ng build --prod",
     "heroku-postbuild": "ng serve"
   },
   "private": true,
