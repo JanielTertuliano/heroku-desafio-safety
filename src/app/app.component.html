@@ -17,18 +17,18 @@
       <ul>
          <li *ngFor="let item of climate">
           <div class="row">
-            <div class="col s7 push-s5">
+            <div  class="col s12 m4 l6">
+              <h4>{{item.query.results.channel.location.city}} - {{item.query.results.channel.location.region}}</h4>
+              <h5>{{item.query.results.channel.location.country}}</h5>
+                 <i [class]="toChange(item.query.results.channel.item.condition.text)" style="font-size: 150px; margin: 10px;"></i>
+              <h5>{{item.query.results.channel.item.condition.text}}</h5>
+              <h6>{{item.query.results.channel.item.condition.date}}</h6>
+            </div>
+            <div  class="col s12 m4 l6">
                <div class="center-align">
                  <label class="temp">{{item.query.results.channel.item.condition.temp}}ºF</label>
                  <h5>{{converter(item.query.results.channel.item.condition.temp) | number:'2.2-2'}}ºC</h5>
                </div>
-            </div>
-            <div class="col s5 pull-s7">
-              <h4>{{item.query.results.channel.location.city}} - {{item.query.results.channel.location.region}}</h4>
-              <h5>{{item.query.results.channel.location.country}}</h5>
-                 <i [class]="toChange(item.query.results.channel.item.condition.text)" style="font-size: 150px;"></i>
-              <h5>{{item.query.results.channel.item.condition.text}}</h5>
-              <h6>{{item.query.results.channel.item.condition.date}}</h6>
             </div>
           </div>
          </li>
