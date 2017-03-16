@@ -6,13 +6,7 @@
     "npm": "3.10.10"
   },
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "heroku-postbuild": "npm run build"
+    "start": "node index.js"
   },
   "private": true,
   "dependencies": {
